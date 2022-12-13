@@ -1,0 +1,30 @@
+// ABRIR ARQUIVO
+	FILE *f;
+	f = fopen( "Mapa.txt" , "r" );  // Cria um arquivo texto para gravação
+
+	if (f == NULL){
+		printf("Problemas na Leitura do arquivo\n");
+		return NULL;
+	}
+	
+	string cidade1, cidade2;
+	int i=0, dist;
+	
+	// Percorre todo arquivo pegando dados do aluno
+	while (i<11){
+		// Toda linha eh um numero 
+		fscanf(f, " %s", cidade1);
+		// Adiciona a cidade na lista 
+		graph = insertCity(&graph, cidade1);
+		i++;
+  	}//while
+  	
+  	while (!feof(f)){
+		// Toda linha eh um numero 
+		fscanf(f, " %s", cidade1);
+		fscanf(f, " %s", cidade2);
+		fscanf(f, " %d", &dist);
+		// Adiciona a cidade na lista 
+		insertEdge(searchCity(graph, cidade1), searchCity(graph, cidade2), dist);
+		insertEdge(searchCity(graph, cidade1), searchCity(graph, cidade2), dist);
+  	}//while
